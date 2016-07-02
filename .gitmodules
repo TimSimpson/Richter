@@ -1,0 +1,6 @@
+[submodule "Lib/BashiBazook"]
+	path = Lib/BashiBazook
+	url = https://github.com/TimSimpson/BashiBazook.git
+[submodule "Lib\\glm"]
+	path = Lib\\glm
+	url = https://github.com/TimSimpson/conan-glm.git
