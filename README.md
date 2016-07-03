@@ -1,14 +1,29 @@
-# CONAN STIV
+# RICHTER CONAN X
 
-This is a repo for to package various projects I want to use via Conan.
+Conan's sidekick, responsible for banishing Dracula in the year 1792.
 
 ## Instructions
 
-0. Ensure git and bash is available in your path
+1. Ensure git and bash is available in your path
 
-1. check out repo
+2. check out repo
 
-2. in repo working directory, run "git submodule update --init"
+3. in repo working directory, run "git submodule update --init --recursive"
 
-3. Run "cstiv" to view options
+4. Run "richter" to view options
 
+ _  E_E
+ -=-'_'
+  "'''-----------*
+  ''||
+   )) \
+  /   |
+
+
+
+ _  E_E
+ -=-'_'                 \ | /
+  "''''--o::::::::::::::-(*)-
+  ''||                  / | \
+   )) \
+  /   |
