@@ -23,13 +23,30 @@ else
     }
 fi
 
+function cmd_cereal() {
+    # Package and test Cereal
+    pushd "${c_root}/Lib/cereal"
+    cowsay "Testing Cereal with ${CONAN_USERNAME}/testing"
+    conan export "${CONAN_USERNAME}"/testing
+    conan test_package
+    popd
+}
 
 function cmd_glm() {
     # Package and test GLM
     pushd "${c_root}/Lib/glm"
-    cowsay 'Testing GLM with demo/testing'
-    CONAN_USERNAME=demo conan export demo/testing
-    CONAN_USERNAME=demo conan test_package
+    cowsay "Testing GLM with ${CONAN_USERNAME}/testing"
+    conan export "${CONAN_USERNAME}"/testing
+    conan test_package
+    popd
+}
+
+function cmd_lua() {
+    # Package and test Cereal
+    pushd "${c_root}/Lib/lua"
+    cowsay "Testing Lua with ${CONAN_USERNAME}/testing"
+    conan export "${CONAN_USERNAME}"/testing
+    conan test_package
     popd
 }
 
