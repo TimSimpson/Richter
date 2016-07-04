@@ -57,6 +57,13 @@ function cmd_refresh () {
     cp "${c_root}/richter.bashi-q" "${c_root}/richter.bashi"
 }
 
+function cmd_vagrant() {
+    # Start up the VM to test the package.
+    pushd "${c_root}/Vagrant"
+    vagrant up
+    popd
+}
+
 bashi_help_preamble="
      _  E_E
      -=-'_'                 R I C H T E R
