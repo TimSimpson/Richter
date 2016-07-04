@@ -13,3 +13,6 @@
 [submodule "Lib/lua"]
 	path = Lib/lua
 	url = https://github.com/TimSimpson/conan-lua.git
+[submodule "Lib/conan"]
+	path = Lib/conan
+	url = https://github.com/conan-io/conan.git
