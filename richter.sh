@@ -26,6 +26,15 @@ if [ "ubuntu-xenial" == "${HOSTNAME}" ]; then
     export CONAN_USERNAME="${CONAN_USERNAME:-demo}"
 fi
 
+function cmd_gsl() {
+    pushd "${c_root}/Lib/GSL"
+    cowsay "Exporting GSL with ${CONAN_USERNAME}/testing"
+    conan export "${CONAN_USERNAME}"/testing
+    cowsay "Testing GSL package"
+    conan test_package
+    popd
+}
+
 function cmd_cereal() {
     # Package and test Cereal
     pushd "${c_root}/Lib/cereal"
