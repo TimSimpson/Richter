@@ -85,36 +85,42 @@ target_include_directories(lua_lib
     PRIVATE
         src)
 
-# install(DIRECTORY include/ DESTINATION include/lua5.2.3)
+install(FILES
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/luaconf.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/lua.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/lua.hpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/lualib.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/lauxlib.h"
+    DESTINATION include/lua5.2.3)
 
-# install(TARGETS lua_lib EXPORT Lua-targets
-#     RUNTIME DESTINATION bin
-#     LIBRARY DESTINATION lib
-#     ARCHIVE DESTINATION lib
-#     INCLUDES DESTINATION include.lua5.2.3
-# )
+install(TARGETS lua_lib EXPORT Lua-targets
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include.lua5.2.3
+)
 
-# add_library(lua::lua ALIAS lua_lib)
-# install(EXPORT Lua-targets
-#     FILE Lua-targets.cmake
-#     NAMESPACE lua::
-#     DESTINATION lib/cmake/Lua_5.2.3
-# )
+add_library(lua::lua ALIAS lua_lib)
+install(EXPORT Lua-targets
+    FILE Lua-targets.cmake
+    NAMESPACE lua::
+    DESTINATION lib/cmake/Lua_5.2.3
+)
 
-# file(WRITE "${PROJECT_BINARY_DIR}/Lua-config.cmake" "
-# include(\"\${CMAKE_CURRENT_LIST_DIR}/Lua-targets.cmake\")
-# ")
+file(WRITE "${PROJECT_BINARY_DIR}/Lua-config.cmake" "
+include(\"\${CMAKE_CURRENT_LIST_DIR}/Lua-targets.cmake\")
+")
 
-# write_basic_package_version_file("${PROJECT_BINARY_DIR}/Lua-config-version.cmake"
-#     VERSION 5.2.3
-#     COMPATIBILITY AnyNewerVersion
-# )
+write_basic_package_version_file("${PROJECT_BINARY_DIR}/Lua-config-version.cmake"
+    VERSION 5.2.3
+    COMPATIBILITY AnyNewerVersion
+)
 
-# install(FILES
-#     "${PROJECT_BINARY_DIR}/Lua-config.cmake"
-#     "${PROJECT_BINARY_DIR}/Lua-config-version.cmake"
-#     DESTINATION lib/cmake/Lua
-# )
+install(FILES
+    "${PROJECT_BINARY_DIR}/Lua-config.cmake"
+    "${PROJECT_BINARY_DIR}/Lua-config-version.cmake"
+    DESTINATION lib/cmake/Lua
+)
 
 add_executable(lua "${CMAKE_CURRENT_SOURCE_DIR}/src/lua.c")
 target_link_libraries(lua lua_lib)

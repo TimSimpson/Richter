@@ -21,19 +21,22 @@ class LuaConan(conans.ConanFile):
 
     def source(self):
         # Download the official Lua sources
-        # conans.tools.get(**self.conan_data["sources"][self.version])
+        conans.tools.get(**self.conan_data["sources"][self.version])
         shutil.copy(pathlib.Path(__file__).parent / "CMakeLists.txt",
                     self.lua_dir / "CMakeLists.txt")
 
-    def build(self):
+    def _configed_cmake(self):
         cmake = conans.CMake(self)
         lua_dir = pathlib.Path(self.source_folder) / self.lua_dir
         cmake.configure(source_folder=str(lua_dir))
+        return cmake
+
+    def build(self):
+        cmake = self._configed_cmake()
         cmake.build()
 
     def package(self):
-        cmake = conans.CMake(self)
-        cmake.configure()
+        cmake = self._configed_cmake()
         cmake.install()
 
         # self.copy(pattern="*.h", dst="include", src=os.path.join(self.lua_dir, "src"))
