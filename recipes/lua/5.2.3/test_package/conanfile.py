@@ -12,9 +12,3 @@ class TestPackage(conans.ConanFile):
     def test(self):
         self.run("lua -v", run_environment=True)
         self.run(f"{self.build_folder}/bin/lua_test", run_environment=True)
-
-        # cmake = conans.CMake(self)
-        # cmake.configure()
-        # cmake.test()
-
-

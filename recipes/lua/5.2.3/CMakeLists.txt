@@ -125,11 +125,6 @@ configure_package_config_file(
   INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/Lua"
 )
 
-# file(WRITE "${PROJECT_BINARY_DIR}/LuaConfig.cmake" "
-# include(CMakeFindDependencyMacro)
-# include(\"\${CMAKE_CURRENT_LIST_DIR}/LuaTargets.cmake\")
-# ")
-
 write_basic_package_version_file("${PROJECT_BINARY_DIR}/LuaConfigVersion.cmake"
     VERSION 5.2.3
     COMPATIBILITY AnyNewerVersion
