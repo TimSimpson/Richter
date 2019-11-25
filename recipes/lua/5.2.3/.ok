@@ -1,0 +1,9 @@
+# Lua 5.2.3
+rm -r output
+mkdir -p output/source && conan source . --source-folder=output/source
+mkdir -p output/install && conan install . --install-folder=output/install
+mkdir -p output/build && conan build . --source-folder=output/source --install-folder=output/install --build-folder=output/build
+mkdir -p output/package && conan package . --source-folder=output/source --install-folder=output/install --build-folder=output/build --package-folder=output/package
+conan export-pkg . -f --package-folder=output/package
+conan test test_package Lua/5.2.3@"${CONAN_USERNAME:-_}"/"${CONAN_CHANNEL:-_}"
+conan test test_package_cmake Lua/5.2.3@"${CONAN_USERNAME:-_}"/"${CONAN_CHANNEL:-_}"

@@ -3,4 +3,5 @@
 **/build/*
 **/package_test/*
 **/__pycache__/*
+**/output/*
 
