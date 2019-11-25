@@ -78,7 +78,7 @@ set_target_properties(lua_lib PROPERTIES OUTPUT_NAME "lua_lib")
 target_include_directories(lua_lib
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include/lua>
+        $<INSTALL_INTERFACE:include/lua5.2.3>
     PRIVATE
         src)
 
@@ -103,7 +103,7 @@ install(TARGETS lua luac
     DESTINATION bin
 )
 
-install(TARGETS lua_lib EXPORT Lua-targets
+install(TARGETS lua_lib EXPORT LuaTargets
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
@@ -111,23 +111,32 @@ install(TARGETS lua_lib EXPORT Lua-targets
 )
 
 add_library(lua::lua ALIAS lua_lib)
-install(EXPORT Lua-targets
-    FILE Lua-targets.cmake
+install(EXPORT LuaTargets
+    FILE LuaTargets.cmake
     NAMESPACE lua::
-    DESTINATION lib/cmake/Lua_5.2.3
+    DESTINATION lib/cmake/Lua
 )
 
-file(WRITE "${PROJECT_BINARY_DIR}/Lua-config.cmake" "
-include(\"\${CMAKE_CURRENT_LIST_DIR}/Lua-targets.cmake\")
-")
+# ${CMAKE_PROJECT_NAME} - use this instead?
 
-write_basic_package_version_file("${PROJECT_BINARY_DIR}/Lua-config-version.cmake"
+configure_package_config_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in"
+  "${PROJECT_BINARY_DIR}/LuaConfig.cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/Lua"
+)
+
+# file(WRITE "${PROJECT_BINARY_DIR}/LuaConfig.cmake" "
+# include(CMakeFindDependencyMacro)
+# include(\"\${CMAKE_CURRENT_LIST_DIR}/LuaTargets.cmake\")
+# ")
+
+write_basic_package_version_file("${PROJECT_BINARY_DIR}/LuaConfigVersion.cmake"
     VERSION 5.2.3
     COMPATIBILITY AnyNewerVersion
 )
 
 install(FILES
-    "${PROJECT_BINARY_DIR}/Lua-config.cmake"
-    "${PROJECT_BINARY_DIR}/Lua-config-version.cmake"
+    "${PROJECT_BINARY_DIR}/LuaConfig.cmake"
+    "${PROJECT_BINARY_DIR}/LuaConfigVersion.cmake"
     DESTINATION lib/cmake/Lua
 )

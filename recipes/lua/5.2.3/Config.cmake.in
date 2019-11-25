@@ -1,0 +1,13 @@
+# Package init
+@PACKAGE_INIT@
+
+if(NOT TARGET lua::lua_lib)
+    include(${CMAKE_CURRENT_LIST_DIR}/LuaTargets.cmake)
+endif()
+
+# --- Check Required
+check_required_components("@PROJECT_NAME@")
+
+# This is probably unnecessary, but I'm going crazy right now
+get_target_property(LUA_INCLUDE_DIR lua::lua_lib INTERFACE_INCLUDE_DIRECTORIES)
+get_target_property(LUA_LIBRARIES lua::lua_lib INTERFACE_LINK_LIBRARIES)

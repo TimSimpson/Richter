@@ -24,6 +24,8 @@ class LuaConan(conans.ConanFile):
         conans.tools.get(**self.conan_data["sources"][self.version])
         shutil.copy(pathlib.Path(__file__).parent / "CMakeLists.txt",
                     self.lua_dir / "CMakeLists.txt")
+        shutil.copy(pathlib.Path(__file__).parent / "Config.cmake.in",
+                    self.lua_dir / "Config.cmake.in")
 
     def _configed_cmake(self):
         cmake = conans.CMake(self)
