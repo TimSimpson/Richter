@@ -44,4 +44,5 @@ class LuaConan(conans.ConanFile):
         # self.copy(pattern="*.a", dst="lib", src="lib")
 
     def package_info(self):
-        self.cpp_info.libs = ["lua"]
+        self.cpp_info.libs = ["lua_lib"]
+        self.cpp_info.includedirs = [f"include/lua{self.version}"]

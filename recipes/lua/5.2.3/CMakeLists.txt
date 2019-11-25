@@ -73,9 +73,6 @@ if (found_math_lib)
     target_link_libraries(lua_lib PUBLIC m)
 endif()
 
-# These are the only headers to install according to the makefile:
-# lua.h luaconf.h lualib.h lauxlib.h lua.hpp
-
 set_target_properties(lua_lib PROPERTIES OUTPUT_NAME "lua_lib")
 
 target_include_directories(lua_lib
@@ -85,6 +82,15 @@ target_include_directories(lua_lib
     PRIVATE
         src)
 
+
+add_executable(lua "${CMAKE_CURRENT_SOURCE_DIR}/src/lua.c")
+target_link_libraries(lua lua_lib)
+
+add_executable(luac ${CMAKE_CURRENT_SOURCE_DIR}/src/luac.c)
+target_link_libraries(luac lua_lib)
+
+# Package Stuff
+
 install(FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/src/luaconf.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/lua.h"
@@ -93,11 +99,15 @@ install(FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/src/lauxlib.h"
     DESTINATION include/lua5.2.3)
 
+install(TARGETS lua luac
+    DESTINATION bin
+)
+
 install(TARGETS lua_lib EXPORT Lua-targets
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
-    INCLUDES DESTINATION include.lua5.2.3
+    INCLUDES DESTINATION include/lua5.2.3
 )
 
 add_library(lua::lua ALIAS lua_lib)
@@ -121,10 +131,3 @@ install(FILES
     "${PROJECT_BINARY_DIR}/Lua-config-version.cmake"
     DESTINATION lib/cmake/Lua
 )
-
-add_executable(lua "${CMAKE_CURRENT_SOURCE_DIR}/src/lua.c")
-target_link_libraries(lua lua_lib)
-
-add_executable(luac ${CMAKE_CURRENT_SOURCE_DIR}/src/luac.c)
-target_link_libraries(luac lua_lib)
-

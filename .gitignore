@@ -1,2 +1,6 @@
 *.bashi
 *.bashi-q
+**/build/*
+**/package_test/*
+**/__pycache__/*
+
