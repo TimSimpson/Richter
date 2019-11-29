@@ -11,9 +11,6 @@ GEN_SRC = pathlib.Path('gen_src')
 class LuaConan(conans.ConanFile):
     name = "Lua"
     version = "5.2.3"
-    # settings = "os", "compiler", "build_type", "arch"
-    # exports = ["conanfile.py", "CMakeLists.txt"]
-    # lua_dir = pathlib.Path(f'lua-{version}')
 
     # Where the extract file contents end up.
     lua_dir = pathlib.Path(f'lua-{version}')
