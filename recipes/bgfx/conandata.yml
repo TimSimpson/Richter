@@ -1,0 +1,10 @@
+sources:
+  "bgfx/2019-11-25":
+    url: "https://github.com/bkaradzic/bgfx/archive/master.zip"
+    sha256: "53273942ab57684b4411b06d78162d0a6b65f5177d5bfcac9448950a21ada5dd"
+  "bimg/2019-11-25":
+    url: "https://github.com/bkaradzic/bimg/archive/master.zip"
+    sha256: "596dff02464cb7f2c3e44e0d3aed582b0f93f601480077364bd6d6e26e3efafb"
+  "bx/2019-11-25":
+    url: "https://github.com/bkaradzic/bx/archive/master.zip"
+    sha256: "ea2265cc09f499319d32095e1cc39be82714c39173fc956a59b1eacbb1157919"
