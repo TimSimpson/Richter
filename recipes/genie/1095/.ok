@@ -1,0 +1,9 @@
+# Bgfx
+# Clean
+rm -r output  # delete the output directory
+# These commands run through the typical Conan package workflow.
+# See: https://docs.conan.io/en/latest/developing_packages/package_dev_flow.html
+mkdir -p output/source && conan source . --source-folder=output/source  # run source step
+mkdir -p output/install && conan install . --install-folder=output/install  # install deps
+mkdir -p output/build && conan build . --source-folder=output/source --install-folder=output/install --build-folder=output/build  # actually build Lua
+mkdir -p output/package && conan package . --source-folder=output/source --install-folder=output/install --build-folder=output/build --package-folder=output/package  # create the package

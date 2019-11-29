@@ -1,0 +1,14 @@
+sources:
+  "2019-11-14":
+    url: "https://github.com/bkaradzic/GENie/archive/84f9352bd2f8bbdb52e931a436423fa3ca473ebb.zip"
+    sha256: "10aaa2a85eb8803d1d42d0178fd610412d8cc3b8050683e8f44ccdc56157e3b6"
+binaries:
+  "Linux":
+    url: "https://github.com/bkaradzic/bx/raw/master/tools/bin/linux/genie"
+    sha256: "da87032f8782063508a22bb65aa136e0cca6d044c175ed4bf499974cf7181003"
+  "Macos":
+    url: "https://github.com/bkaradzic/bx/raw/master/tools/bin/darwin/genie"
+    sha256: "c1b4793628a56e56c03bc8377e069b6b7ab0c3b2949ff79b0dfe9c1d91c26d9d"
+  "Windows":
+    url: "https://github.com/bkaradzic/bx/raw/master/tools/bin/windows/genie.exe"
+    sha256: "c7f9d7b823173c96fcd0516971ae0ad98031af9cde5568dd367d2d8372ba5df6"
