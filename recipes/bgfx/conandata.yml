@@ -1,10 +1,13 @@
 sources:
-  "bgfx/2019-11-27":
-    url: "https://github.com/bkaradzic/bgfx/archive/4c3f3b6e14e809690c0426ce600334a1ea6e3a0b.zip"
-    sha256: "ab07f7f108a41a956fd81cebe805d60a6663d860b684f27e4fae500e2fb236e1"
-  "bimg/2019-11-27":
-    url: "https://github.com/bkaradzic/bimg/archive/ed5fec9e82f975b2b37641e238f6f78d51c5b82c.zip"
-    sha256: "3868350cb5d5cb52d164cc024481694510318decf6f6d478760d0a9bd0d30aea"
-  "bx/2019-11-27":
-    url: "https://github.com/bkaradzic/bx/archive/d175bde9d0059b126fd2a3084167623077586fe9.zip"
-    sha256: "c8d5dce406ce236eb26ce81d9c3aacb66ca4bdbe5ee9f16319b17eca74c2ccdc"
+  "bgfx.cmake/2019-09-27":
+    url: "https://github.com/JoshuaBrookover/bgfx.cmake/archive/83f791ee15a494d697f9cadae3cf9678b9a282ef.zip"
+    sha256: "c17c46aa97cd0f1d08271c175d08a6a068ad6b3b2a5ae6cda54961e6b2ffaf72"
+  "bgfx/2019-09-27":
+    url: "https://github.com/bkaradzic/bgfx/archive/5e4646fbbc0184800a3493cdf10f7eed22757813.zip"
+    sha256: "9b1d5e1cc64062655e17aae4cc01d134bd5d4ed8a3aaa67fde8783b7d5c98a30"
+  "bimg/2019-09-27":
+    url: "https://github.com/bkaradzic/bimg/archive/b34b29fa694d5bd328bd374c1728b4d0426b1788.zip"
+    sha256: "f7f0f038cd7fccb08473f5896c71e0aa5c7df354467ecafb6ff1ac80f0f9a8eb"
+  "bx/2019-09-27":
+    url: "https://github.com/bkaradzic/bx/archive/2e4bc10d6c63b811f4aa2f9c8678339221bc73ca.zip"
+    sha256: "e7005c475e7a93d3c4d4f9730a1a4f52c8d305f45fc7bfebd5bdcdfb1463ac25"

@@ -5,5 +5,7 @@ rm -r output  # delete the output directory
 # See: https://docs.conan.io/en/latest/developing_packages/package_dev_flow.html
 mkdir -p output/source && conan source . --source-folder=output/source  # run source step
 mkdir -p output/install && conan install . --install-folder=output/install  # install deps
-mkdir -p output/build && conan build . --source-folder=output/source --install-folder=output/install --build-folder=output/build  # actually build Lua
+mkdir -p output/build && conan build . --source-folder=output/source --install-folder=output/install --build-folder=output/build  # actually build
 mkdir -p output/package && conan package . --source-folder=output/source --install-folder=output/install --build-folder=output/build --package-folder=output/package  # create the package
+conan export-pkg . -f --package-folder=output/package  # export the package from the last step
+conan test test_package bgfx/2019-09-27@"${CONAN_USERNAME:-_}"/"${CONAN_CHANNEL:-_}"  # tests "test_package"
