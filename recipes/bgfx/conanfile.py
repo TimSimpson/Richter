@@ -12,8 +12,13 @@ class BgfxConan(conans.ConanFile):
     name = "bgfx"
     version = "2019-09-27"
     # settings = "os", "compiler", "build_type", "arch"
+    settings = "arch",
 
     submodules = ["bgfx", "bimg", "bx"]
+
+    # options = {
+    #     'build_tools': [True, False]
+    # }
 
     @property
     def _source_path(self):
@@ -53,11 +58,21 @@ class BgfxConan(conans.ConanFile):
 
     def _configed_cmake(self):
         cmake = conans.CMake(self)
+
+        # The source CMake file could possibly be updated to build these tools
+        # using a toolchain on the build OS rather than the destination OS
+        # somehow, but just work around it in Emscripten.
+        arch = self.settings.get_safe('arch')
+        if arch.startswith("asm.js"):
+            cmake.definitions["BGFX_BUILD_TOOLS"] = "FALSE"
+
         cmake.configure(source_folder=str(self._source_path / "root"))
         return cmake
 
     def build(self):
         cmake = self._configed_cmake()
+
+
         cmake.build()
 
     def package(self):
