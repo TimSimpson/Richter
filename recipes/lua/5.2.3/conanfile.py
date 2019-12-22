@@ -15,13 +15,14 @@ class LuaConan(conans.ConanFile):
     # Where the extract file contents end up.
     lua_dir = pathlib.Path(f'lua-{version}')
 
+    exports_sources = ("CMakeLists.txt", "Config.cmake.in")
 
     def source(self):
         # Download the official Lua sources
         conans.tools.get(**self.conan_data["sources"][self.version])
-        shutil.copy(pathlib.Path(__file__).parent / "CMakeLists.txt",
+        shutil.copy(pathlib.Path(self.source_folder) / "CMakeLists.txt",
                     self.lua_dir / "CMakeLists.txt")
-        shutil.copy(pathlib.Path(__file__).parent / "Config.cmake.in",
+        shutil.copy(pathlib.Path(self.source_folder) / "Config.cmake.in",
                     self.lua_dir / "Config.cmake.in")
 
     def _configed_cmake(self):
